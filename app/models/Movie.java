@@ -6,14 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+/**
+ * Created by enda on 31/08/15.
+ */
 @Entity
-public class Bar {
+public class Movie {
 
     @Id
     @GeneratedValue
-    public Long id;
-
-    @Constraints.Required(message = "The name is required")
-    public String name;
-
+    public long id;
+    @Constraints.Required
+    public String title;
 }

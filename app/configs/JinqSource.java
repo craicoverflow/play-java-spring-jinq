@@ -1,6 +1,6 @@
-package services;
+package configs;
 
-import models.Bar;
+import models.Movie;
 import org.jinq.jpa.JPAJinqStream;
 import org.jinq.jpa.JinqJPAStreamProvider;
 import org.springframework.stereotype.Component;
@@ -30,7 +30,7 @@ public class JinqSource {
     }
 
     // You can include helper methods here too
-    public JPAJinqStream<Bar> bars(EntityManager em) {
-        return streams.streamAll(em, Bar.class);
+    public JPAJinqStream<Movie> movies(EntityManager em) {
+        return streams.streamAll(em, Movie.class);
     }
 }
