@@ -2,6 +2,7 @@ package services;
 
 
 import models.Bar;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import play.Logger;
@@ -18,6 +19,9 @@ public class BarServiceImpl implements BarService {
     @PersistenceContext
     EntityManager em;
 
+    @Autowired
+    JinqSource source;
+
     @Override
     public void addBar(Bar bar) {
         em.persist(bar);
@@ -25,9 +29,14 @@ public class BarServiceImpl implements BarService {
 
     @Override
     public List<Bar> getAllBars() {
-        CriteriaQuery<Bar> c = em.getCriteriaBuilder().createQuery(Bar.class);
-        c.from(Bar.class);
-        return em.createQuery(c).getResultList();
+        return source.bars(em).toList();
     }
+
+//    @Override
+//    public List<Bar> getAllBars() {
+//        CriteriaQuery<Bar> c = em.getCriteriaBuilder().createQuery(Bar.class);
+//        c.from(Bar.class);
+//        return em.createQuery(c).getResultList();
+//    }
 
 }

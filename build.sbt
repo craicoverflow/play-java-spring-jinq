@@ -5,6 +5,8 @@ version := "1.0-SNAPSHOT"
 libraryDependencies ++= Seq(
   javaCore,
   javaWs % "test",
+  "javax.inject" % "javax.inject" % "1",
+  "org.jinq" % "jinq-jpa" % "1.8.4",
   "com.h2database" % "h2" % "1.4.181",
   "org.springframework" % "spring-context" % "4.1.1.RELEASE",
   "org.springframework" % "spring-orm" % "4.1.1.RELEASE",

@@ -12,8 +12,13 @@ import views.html.index;
 @org.springframework.stereotype.Controller
 public class Application {
 
+//    @Autowired
+    private final BarService barService;
+
     @Autowired
-    private BarService barService;
+    public Application(BarService barService) {
+        this.barService = barService;
+    }
 
     public Result index() {
         return play.mvc.Controller.ok(index.render(Form.form(Bar.class)));
@@ -23,7 +28,7 @@ public class Application {
         Form<Bar> form = Form.form(Bar.class).bindFromRequest();
         Bar bar = form.get();
         barService.addBar(bar);
-        return play.mvc.Controller.redirect(controllers.routes.Application.index());
+        return index();
     }
 
     public Result listBars() {

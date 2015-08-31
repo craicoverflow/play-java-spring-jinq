@@ -15,6 +15,7 @@ import javax.sql.DataSource;
 
 import play.Logger;
 import play.Play;
+import services.JinqSource;
 
 import java.util.HashMap;
 
@@ -40,9 +41,12 @@ public class DataConfig {
 
     @Bean
     public PlatformTransactionManager transactionManager() {
-        JpaTransactionManager transactionManager = new JpaTransactionManager(entityManagerFactory());
+        return new JpaTransactionManager(entityManagerFactory());
+    }
 
-        return transactionManager;
+    @Bean
+    public JinqSource jinqSource() {
+        return new JinqSource();
     }
 
     @Bean
