@@ -5,6 +5,7 @@ import play.data.validation.Constraints;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.sql.Date;
 
 /**
  * Created by enda on 31/08/15.
@@ -17,4 +18,5 @@ public class Movie {
     public long id;
     @Constraints.Required
     public String title;
+    public Date createdDate;
 }

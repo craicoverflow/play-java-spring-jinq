@@ -30,7 +30,7 @@ public class DataConfig {
         entityManagerFactory.setJpaVendorAdapter(vendorAdapter);
         entityManagerFactory.setDataSource(dataSource());
         entityManagerFactory.setJpaPropertyMap(new HashMap<String, String>(){{
-            put("hibernate.hbm2ddl.auto", "create-drop");
+            put("hibernate.hbm2ddl.auto", "update");
         }});
         entityManagerFactory.afterPropertiesSet();
         return entityManagerFactory.getObject();

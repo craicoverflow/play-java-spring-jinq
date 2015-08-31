@@ -2,11 +2,11 @@
 
 @main("Welcome to Play 2.0") {
 
-    <ul id="movies"></ul>
-
     @helper.form(action = routes.MoviesController.addMovie) {
-        @helper.inputText(form("title"))
-        <input type="submit"/>
+        <div class="form-group">
+        @helper.inputText(form("title"), 'class->"form-control", 'placeholder->"Enter movie title...", '_label->null)
+        </div>
+        <input type="submit" class="btn btn-primary"/>
     }
 
 }

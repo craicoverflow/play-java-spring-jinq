@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -18,16 +19,18 @@ import java.util.List;
 public class MovieRepositoryImpl implements MovieRepository {
 
     @PersistenceContext
-    EntityManager em;
+    private EntityManager em;
 
     @Autowired
-    JinqSource source;
+    private JinqSource source;
 
     @Override
     public Movie addMovie(Movie movie) {
+        movie.createdDate = currentDate();
         em.persist(movie);
         return movie;
     }
+
 
     @Override
     public List<Movie> getMoviesWithTitle(String title) {
@@ -40,5 +43,9 @@ public class MovieRepositoryImpl implements MovieRepository {
     @Override
     public List<Movie> getAllMovies() {
         return source.movies(em).toList();
+    }
+
+    private Date currentDate() {
+        return new Date(System.currentTimeMillis());
     }
 }
