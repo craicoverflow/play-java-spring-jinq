@@ -5,17 +5,19 @@ import models.Bar;
 import org.springframework.beans.factory.annotation.Autowired;
 import play.data.Form;
 import play.libs.Json;
+import play.mvc.Controller;
 import play.mvc.Result;
 import services.BarService;
 import views.html.index;
 
-@org.springframework.stereotype.Controller
-public class Application {
+import javax.inject.Inject;
 
-//    @Autowired
+@org.springframework.stereotype.Controller
+public class Application extends Controller {
+
     private final BarService barService;
 
-    @Autowired
+    @Inject
     public Application(BarService barService) {
         this.barService = barService;
     }

@@ -2,11 +2,14 @@ package services;
 
 import models.Bar;
 
+import javax.inject.Named;
+import javax.inject.Singleton;
 import java.util.List;
 
+@Named
+@Singleton
 public interface BarService {
-
-    public void addBar(Bar bar);
-    public List<Bar> getAllBars();
+    void addBar(Bar bar);
+    List<Bar> getAllBars();
     
 }
