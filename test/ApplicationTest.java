@@ -1,4 +1,12 @@
+import org.junit.Test;
+import play.mvc.Result;
+import play.test.FakeRequest;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.fest.assertions.Assertions.assertThat;
+import static play.test.Helpers.*;
 
 // todo: not using the right spring context when using fakeApplication()
 public class ApplicationTest {

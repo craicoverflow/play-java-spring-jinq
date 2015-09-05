@@ -1,6 +1,7 @@
 import configs.AppConfig;
 import models.Movie;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import repositories.MovieRepository;
@@ -13,12 +14,8 @@ import static org.fest.assertions.Assertions.assertThat;
 @ContextConfiguration(classes={AppConfig.class, TestDataConfig.class})
 public class MovieRepositoryTest extends AbstractTransactionalJUnit4SpringContextTests {
 
-    private final MovieRepository repo;
-
     @Inject
-    public MovieRepositoryTest(MovieRepository repo) {
-        this.repo = repo;
-    }
+    private MovieRepository repo;
 
     @Test
     public void createMovie() {
@@ -29,7 +26,7 @@ public class MovieRepositoryTest extends AbstractTransactionalJUnit4SpringContex
     }
 
     @Test
-    public void getBars() {
+    public void getMovies() {
         createMovie();
         List<Movie> movies = repo.getAllMovies();
         assertThat(movies.size()).isEqualTo(1);
