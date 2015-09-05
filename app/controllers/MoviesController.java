@@ -9,6 +9,7 @@ import java.util.List;
 import views.html.index;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import static play.libs.Json.toJson;
 import static play.mvc.Results.notFound;
@@ -18,6 +19,7 @@ import static play.mvc.Results.ok;
  * Created by enda on 31/08/15.
  */
 @Controller
+@Singleton
 public class MoviesController {
 
     private final MovieRepository repo;
